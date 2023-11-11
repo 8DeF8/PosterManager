@@ -1,151 +1,117 @@
 package ru.netology.javaqa;
 
-import org.junit.jupiter.api.Assertions;
+import ru.netology.javaqa.domain.Poster;
+import org.mockito.Mockito;
 import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.Assertions.*;
+import org.mockito.Mockito;
+import ru.netology.javaqa.Main;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PosterManagerTest {
+    PosterManager film1 = new PosterManager("Фильм 1");
+    PosterManager film2 = new PosterManager("Фильм 2");
+    PosterManager film3 = new PosterManager("Фильм 3");
+    PosterManager film4 = new PosterManager("Фильм 4");
+    PosterManager film5 = new PosterManager("Фильм 5");
+    PosterManager film6 = new PosterManager("Фильм 6");
+    PosterManager film7 = new PosterManager("Фильм 7");
+
     @Test
-    public void findAll() {
+    public void test1FindLast() {
         PosterManager manager = new PosterManager();
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        String[] actual = manager.findAll();
-        String[] expected = {movie1, movie2, movie3};
 
-        Assertions.assertArrayEquals(expected, actual);
+
+        PosterManager[] actual = manager.findLast();
+        PosterManager[] expected = {film7, film6, film5, film4, film3, film2, film1};
+
+        assertArrayEquals(actual, expected);
     }
 
     @Test
-    public void findLastWhenLimitEqualsSize() {
+    public void test2FindLast() {
         PosterManager manager = new PosterManager();
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
+        manager.add(film1);
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        manager.add(movie4);
-        manager.add(movie5);
-        String[] actual = manager.findLast();
-        String[] expected = {movie5, movie4, movie3, movie2, movie1};
 
-        Assertions.assertArrayEquals(expected, actual);
+        PosterManager[] actual = manager.findLast();
+        PosterManager[] expected = {film1};
+
+        assertArrayEquals(actual, expected);
     }
 
     @Test
-    public void findLastWhenLimitMoreSize() {
+    public void test3FindLast() {
         PosterManager manager = new PosterManager();
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        String[] actual = manager.findLast();
-        String[] expected = {movie3, movie2, movie1};
 
-        Assertions.assertArrayEquals(expected, actual);
+        PosterManager[] actual = manager.findLast();
+        PosterManager[] expected = {film5, film4, film3, film2, film1};
+
+        assertArrayEquals(actual, expected);
     }
 
     @Test
-    public void findLastWhenLimitLessSize() {
+    public void test4FindLast() {
         PosterManager manager = new PosterManager();
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        manager.add(movie4);
-        manager.add(movie5);
-        manager.add(movie6);
-        manager.add(movie7);
-        String[] actual = manager.findLast();
-        String[] expected = {movie7, movie6, movie5, movie4, movie3};
 
-        Assertions.assertArrayEquals(expected, actual);
+
+        PosterManager[] actual = manager.findLast();
+        PosterManager[] expected = {film7, film6, film5, film4, film3, film2, film1};
+
+        assertArrayEquals(actual, expected);
     }
 
     @Test
-    public void findLastWhenLimitEqualsSizeCustom() {
-        PosterManager manager = new PosterManager(3);
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
+    public void test5FindLast() {
+        PosterManager manager = new PosterManager();
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        String[] actual = manager.findLast();
-        String[] expected = {movie3, movie2, movie1};
 
-        Assertions.assertArrayEquals(expected, actual);
+        PosterManager[] actual = manager.findLast();
+        PosterManager[] expected = {};
+
+        assertArrayEquals(actual, expected);
     }
 
     @Test
-    public void findLastWhenLimitMoreSizeCustom() {
-        PosterManager manager = new PosterManager(7);
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
+    public void testFindAll() {
+        PosterManager manager = new PosterManager();
+        manager.add(film1);
+        manager.add(film2);
+        manager.add(film3);
+        manager.add(film4);
+        manager.add(film5);
+        manager.add(film6);
+        manager.add(film7);
 
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        manager.add(movie4);
-        manager.add(movie5);
-        String[] actual = manager.findLast();
-        String[] expected = {movie5, movie4, movie3, movie2, movie1};
 
-        Assertions.assertArrayEquals(expected, actual);
+        PosterManager[] actual = manager.findAll();
+        PosterManager[] expected = {film1, film2, film3, film4, film5, film6, film7};
+
+        assertArrayEquals(actual, expected);
     }
-
-    @Test
-    public void findLastWhenLimitLessSizeCustom() {
-        PosterManager manager = new PosterManager(3);
-        String movie1 = "Фильм 1";
-        String movie2 = "Фильм 2";
-        String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
-
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        manager.add(movie4);
-        manager.add(movie5);
-        manager.add(movie6);
-        manager.add(movie7);
-        String[] actual = manager.findLast();
-        String[] expected = {movie7, movie6, movie5};
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-
-
-
 
 }

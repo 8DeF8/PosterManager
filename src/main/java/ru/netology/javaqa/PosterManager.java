@@ -1,41 +1,52 @@
 package ru.netology.javaqa;
+import ru.netology.javaqa.domain.Poster;
+
 
 public class PosterManager {
-    private String[] movies = new String[0];
-    private int limit = 5;
+    private PosterManager[] playbill = new PosterManager[0];
+    private int limit;
+
+    public PosterManager() {
+        limit = 7;
+    }
 
     public PosterManager(int limit) {
         this.limit = limit;
     }
 
-    public PosterManager() {
+    public PosterManager(String s) {
     }
 
-    public void add(String newMovie) {
-        String[] tmp = new String[movies.length + 1];
-        for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[i];
-        }
-        tmp[tmp.length - 1] = newMovie;
-        movies = tmp;
+
+    public void add(PosterManager item) {
+        int length = playbill.length + 1;
+        PosterManager[] tmp = new PosterManager[length];
+        System.arraycopy(playbill, 0, tmp, 0, playbill.length);
+
+
+        int lastIndex = tmp.length - 1;
+        tmp[lastIndex] = item;
+        playbill = tmp;
+
     }
 
-    public String[] findAll() {
-        return movies;
-    }
-
-    public String[] findLast() {
-        int resultLength;
-        if (limit < movies.length) {
-            resultLength = limit;
+    public PosterManager[] findLast() {
+        PosterManager[] playbill = findAll();
+        PosterManager[] result;
+        if (limit < playbill.length) {
+            result = new PosterManager[limit];
         } else {
-            resultLength = movies.length;
+            result = new PosterManager[playbill.length];
         }
-
-        String[] result = new String[resultLength];
-        for (int i = 0; i < resultLength; i++) {
-            result[i] = movies[movies.length - 1 - i];
+        for (int i = 0; i < result.length; i++) {
+            int index = playbill.length - i - 1;
+            result[i] = playbill[index];
         }
         return result;
     }
+
+    public PosterManager[] findAll() {
+        return playbill;
+    }
+
 }
