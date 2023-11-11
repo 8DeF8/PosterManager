@@ -12,10 +12,6 @@ class PosterManagerTest {
         String movie1 = "Фильм 1";
         String movie2 = "Фильм 2";
         String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
 
         manager.add(movie1);
         manager.add(movie2);
@@ -54,10 +50,6 @@ class PosterManagerTest {
         String movie1 = "Фильм 1";
         String movie2 = "Фильм 2";
         String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
 
         manager.add(movie1);
         manager.add(movie2);
@@ -98,10 +90,6 @@ class PosterManagerTest {
         String movie1 = "Фильм 1";
         String movie2 = "Фильм 2";
         String movie3 = "Фильм 3";
-        String movie4 = "Фильм 4";
-        String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
 
         manager.add(movie1);
         manager.add(movie2);
@@ -120,8 +108,6 @@ class PosterManagerTest {
         String movie3 = "Фильм 3";
         String movie4 = "Фильм 4";
         String movie5 = "Фильм 5";
-        String movie6 = "Фильм 6";
-        String movie7 = "Фильм 7";
 
         manager.add(movie1);
         manager.add(movie2);
