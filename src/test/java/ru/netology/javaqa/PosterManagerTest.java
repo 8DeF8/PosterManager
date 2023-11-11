@@ -68,19 +68,15 @@ class PosterManagerTest {
 
     @Test
     public void test4FindLast() {
-        PosterManager manager = new PosterManager();
+        PosterManager manager = new PosterManager(5);
         manager.add(film1);
         manager.add(film2);
         manager.add(film3);
         manager.add(film4);
         manager.add(film5);
-        manager.add(film6);
-        manager.add(film7);
-
-
 
         PosterManager[] actual = manager.findLast();
-        PosterManager[] expected = {film7, film6, film5, film4, film3, film2, film1};
+        PosterManager[] expected = {film5, film4, film3, film2, film1};
 
         assertArrayEquals(actual, expected);
     }
