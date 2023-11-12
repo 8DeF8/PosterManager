@@ -7,7 +7,7 @@ public class PosterManager {
     private int limit;
 
     public PosterManager() {
-        limit = 7;
+        limit = 5;
     }
 
     public PosterManager(int limit) {
